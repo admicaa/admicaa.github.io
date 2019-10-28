@@ -7,15 +7,13 @@
     <textarea style="height: 50%; width: 100%;" readonly></textarea>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
+        var loader = setInterval(function () {
+            if (document.readyState !== "complete") return;
+            alert('here');
+            window.postMessage('{"type":"success"}', '*');
+            clearInterval(loader);
 
-            alert('from document load')
-            window.postMessage('{"type":"success"}', "*");
-            setTimeout(() => {
-                window.postMessage('{"type":"success"}', "*");
-            }, 1000)
-
-        })
+        }, 300);
 
 
     </script>
