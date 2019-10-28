@@ -17,12 +17,13 @@
 
             console.log(window.opener);
             alert(window.opener);
-            document.postMessage('success only message')
-            window.postMessage('success only message')
+            document.postMessage('success only message', '*')
+            window.postMessage('success only window', '*')
             window.postMessage(
                 {
                     type: 'success'
-                }
+                },
+                '*'
             );
             window.opener.postMessage(
                 {
