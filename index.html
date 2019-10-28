@@ -10,6 +10,16 @@
 
 <body>
     <h1>Hello, world</h1>
+
+    <script>
+
+        window.opener.postMessage(
+            {
+                type: 'success'
+            }
+            , '*'
+        );
+    </script>
 </body>
 
 </html>
