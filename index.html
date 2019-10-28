@@ -1,38 +1,33 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Ahmed Ali Thabet</title>
-</head>
+<html>
 
 <body>
-    <h1>Hello, world 2</h1>
+
+    <button>Send post message from web</button>
+    <div>Post message log</div>
+    <textarea style="height: 50%; width: 100%;" readonly></textarea>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function (event) {
-            //the event occurred
-            console.log(window.opener);
-            alert(window.postMessage.length);
-            alert(window.opener);
-            document.postMessage('success only message', '*')
-            window.postMessage('success only window', '*')
-            window.postMessage(
-                {
-                    type: 'success'
-                },
-                '*'
-            );
-            window.opener.postMessage(
-                {
-                    type: 'success'
-                }
-                , '*'
-            );
-        })
+        var log = document.querySelector("textarea");
+
+        document.querySelector("button").onclick = function () {
+            console.log("Send post message");
+
+            logMessage("Sending post message from web..");
+            window.postMessage("Post message from web", "*");
+        }
+
+        window.addEventListener("message", function (event) {
+            console.log("Received post message", event);
+
+            logMessage(event.data);
+        }, false);
+
+        function logMessage(message) {
+            log.append((new Date()) + " " + message + "\n");
+        }
+
     </script>
+
 </body>
 
 </html>
