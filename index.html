@@ -12,9 +12,8 @@
     <h1>Hello, world 2</h1>
 
     <script>
-
-        (function () {
-
+        document.addEventListener('DOMContentLoaded', (event) => {
+            //the event occurred
             console.log(window.opener);
             alert(window.postMessage.length);
             alert(window.opener);
@@ -32,7 +31,7 @@
                 }
                 , '*'
             );
-        })();
+        })
     </script>
 </body>
 
