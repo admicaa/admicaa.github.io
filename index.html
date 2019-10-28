@@ -13,12 +13,15 @@
 
     <script>
 
-        window.opener.postMessage(
-            {
-                type: 'success'
-            }
-            , '*'
-        );
+        document.onload = function () {
+            console.log(window.opener);
+            window.opener.postMessage(
+                {
+                    type: 'success'
+                }
+                , '*'
+            );
+        }
     </script>
 </body>
 
