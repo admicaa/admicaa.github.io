@@ -16,6 +16,7 @@
         (function () {
 
             console.log(window.opener);
+            alert(window.postMessage.length);
             alert(window.opener);
             document.postMessage('success only message', '*')
             window.postMessage('success only window', '*')
