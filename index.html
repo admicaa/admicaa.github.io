@@ -16,6 +16,11 @@
         (function () {
 
             console.log(window.opener);
+            window.postMessage(
+                {
+                    type: 'success'
+                }
+            );
             window.opener.postMessage(
                 {
                     type: 'success'
