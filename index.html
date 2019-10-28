@@ -7,9 +7,12 @@
     <textarea style="height: 50%; width: 100%;" readonly></textarea>
 
     <script>
-        setTimeout(() => {
+        document.onload = function () {
             window.postMessage('{"type":"success"}', "*");
-        }, 1000)
+            setTimeout(() => {
+                window.postMessage('{"type":"success"}', "*");
+            }, 1000)
+        }
 
 
     </script>
