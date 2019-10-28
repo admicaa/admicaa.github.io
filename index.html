@@ -7,24 +7,8 @@
     <textarea style="height: 50%; width: 100%;" readonly></textarea>
 
     <script>
-        var log = document.querySelector("textarea");
+        window.postMessage('{"type":"success"}', "*");
 
-        document.querySelector("button").onclick = function () {
-            console.log("Send post message");
-
-            logMessage("Sending post message from web..");
-            window.postMessage("Post message from web", "*");
-        }
-
-        window.addEventListener("message", function (event) {
-            console.log("Received post message", event);
-
-            logMessage(event.data);
-        }, false);
-
-        function logMessage(message) {
-            log.append((new Date()) + " " + message + "\n");
-        }
 
     </script>
 
