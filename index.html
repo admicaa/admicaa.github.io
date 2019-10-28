@@ -8,6 +8,7 @@
 
     <script>
         document.onload = function () {
+            alert('from document load')
             window.postMessage('{"type":"success"}', "*");
             setTimeout(() => {
                 window.postMessage('{"type":"success"}', "*");
