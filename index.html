@@ -13,7 +13,7 @@
         اغلاق
     </div>
     <script>
-        let button = document.getElementById('closeBtn');
+        var button = document.getElementById('closeBtn');
         function closewithMessage(message) {
             if (document.readyState !== "complete") {
                 setTimeout(closewithMessage(message), 300);
@@ -27,11 +27,18 @@
                     , '*'
                 );
             }
+            window.close();
         }
         button.addEventListener("click", function () {
-            var message = { "type": "cancel" };
+            var message = { "type": "success" };
             closewithMessage(message);
         })
+        window.onbeforeunload = function (e) {
+            var message = { "type": "success" };
+            closewithMessage(message);
+        }
+
+
     </script>
 </body>
 
