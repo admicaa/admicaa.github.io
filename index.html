@@ -1,23 +1,38 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
 
 <body>
-
-    <button>Send post message from web</button>
-    <div>Post message log</div>
-    <textarea style="height: 50%; width: 100%;" readonly></textarea>
-
+    <div style="margin-top:150px;" class="btn" id="closeBtn">
+        اغلاق
+    </div>
     <script>
-        var loader = setInterval(function () {
-            if (document.readyState !== "complete") return;
-            alert('here');
-            window.postMessage('{"type":"success"}', '*');
-            clearInterval(loader);
+        var button = document.getElementById('closeBtn');
+        function closewithMessage(message) {
+            if (document.readyState !== "complete") {
+                setTimeout(closewithMessage(message), 300);
+                return;
+            }
 
-        }, 300);
-
-
+            window.postMessage(JSON.stringify(message), '*');
+            if (window.opener) {
+                window.opener.postMessage(
+                    message
+                    , '*'
+                );
+            }
+        }
+        button.addEventListener("click", function () {
+            var message = { "type": "cancel" };
+            closewithMessage(message);
+        })
     </script>
-
 </body>
 
 </html>
